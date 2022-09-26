@@ -1,0 +1,137 @@
+{
+  "project_info": {
+    "project_number": "978967191210",
+    "project_id": "ecormerce-app",
+    "storage_bucket": "ecormerce-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978967191210:android:34b23967728fc2e342bad3",
+        "android_client_info": {
+          "package_name": "com.android.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978967191210-gr4mlj6p3g424torqemf03pb4emnfshl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.app",
+            "certificate_hash": "0f544d2a62118b8a091273dc361bbf369bde7744"
+          }
+        },
+        {
+          "client_id": "978967191210-jidc3jp0vh41bcdskc4574lfhr39jf7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsEGTntrIVkarAnQZvm4a1j9G3rynXoiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978967191210-jidc3jp0vh41bcdskc4574lfhr39jf7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978967191210:android:f3f8be1ae140719342bad3",
+        "android_client_info": {
+          "package_name": "com.example.sms_forward"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978967191210-9he5mbc4q10pit8u9tkstrp59qjai7rk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sms_forward",
+            "certificate_hash": "fbe62cd0aee30b71322572cccabbb9e07c2a3ec9"
+          }
+        },
+        {
+          "client_id": "978967191210-jf54sdio6fsuf3qcd8cjemng7g69hbc3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sms_forward",
+            "certificate_hash": "2df3ee5d9690098ffd737b8a5055b22aaa67b16f"
+          }
+        },
+        {
+          "client_id": "978967191210-jidc3jp0vh41bcdskc4574lfhr39jf7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsEGTntrIVkarAnQZvm4a1j9G3rynXoiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978967191210-jidc3jp0vh41bcdskc4574lfhr39jf7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978967191210:android:5d1aad8efca6ca3142bad3",
+        "android_client_info": {
+          "package_name": "com.smsforword.gmail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978967191210-09lspvp51648knahpter8hqsr8dlam6r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smsforword.gmail",
+            "certificate_hash": "6278a5cf62bd0d8102adabbd7ee43bd5ac88eb3c"
+          }
+        },
+        {
+          "client_id": "978967191210-lm255h86t5hrsttsiuso5forolnspgc0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smsforword.gmail",
+            "certificate_hash": "2df3ee5d9690098ffd737b8a5055b22aaa67b16f"
+          }
+        },
+        {
+          "client_id": "978967191210-jidc3jp0vh41bcdskc4574lfhr39jf7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsEGTntrIVkarAnQZvm4a1j9G3rynXoiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978967191210-jidc3jp0vh41bcdskc4574lfhr39jf7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
