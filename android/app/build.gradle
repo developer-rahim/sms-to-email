@@ -70,5 +70,5 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:32.1.0')
-
+//  Firebase Logged in rahim.nextive@gmail.com
 }
