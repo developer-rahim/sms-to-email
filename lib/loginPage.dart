@@ -11,7 +11,6 @@ String? email;
 String? token;
 var userC;
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -73,7 +72,6 @@ class _LoginPageState extends State<LoginPage> {
     // TODO: implement initState
     super.initState();
     checkSignIn();
-   
   }
 
   Future<String?> refreshToken() async {
@@ -114,15 +112,17 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const
-        // Scaffold(
-        // body:
-        Center(
-            child: Text(
-      'Loading........',
-      style: TextStyle(
-          fontSize: 17, fontWeight: FontWeight.bold, color: Colors.blue),
-    ));
-    //);
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Loading........',
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+            color: Colors.blue,
+          ),
+        ),
+      ),
+    );
   }
 }

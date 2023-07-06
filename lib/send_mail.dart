@@ -34,20 +34,18 @@ class _EmailSenderState extends State<EmailSender> {
 
   Future<void> startService() async {
     if (Platform.isAndroid) {
-      var methodChannel = MethodChannel("com.example.messages");
+      var methodChannel = const MethodChannel("com.example.messages");
       String data = await methodChannel.invokeMethod("startService");
       debugPrint(data);
     }
   }
 
-  
-
   @override
   void initState() {
     AuthController authController = Provider.of(context, listen: false);
-        Controller controller = Provider.of(context, listen: false);
+    Controller controller = Provider.of(context, listen: false);
     controller.background();
-    Timer.periodic(Duration(minutes: 50), (timer) {
+    Timer.periodic(const Duration(minutes: 50), (timer) {
       authController.refreshToken();
       // setState(() {
       //   START_SERVICE++;
@@ -58,7 +56,7 @@ class _EmailSenderState extends State<EmailSender> {
     super.initState();
 
     loadData().then((value) {
-      timer = Timer.periodic(const Duration(seconds: 10), (Timer t) {
+      timer = Timer.periodic(const Duration(seconds: 5), (Timer t) {
         // setState(() {
         //   START_SERVICE++;
         //   print('aaaaa$START_SERVICE');
@@ -71,8 +69,6 @@ class _EmailSenderState extends State<EmailSender> {
   }
 
   loadData() async {
-
-    
     print('bbbbbbbb');
     final prefs = await SharedPreferences.getInstance();
     timeStamp = prefs.getInt('time');
@@ -108,7 +104,7 @@ class _EmailSenderState extends State<EmailSender> {
       }
     }
     setState(() {
-      status = "New sms found: " + newMessages.length.toString();
+      status = "New sms found: ${newMessages.length}";
       isSent = newMessages.isEmpty;
     });
     await sendNewSms();
@@ -271,11 +267,11 @@ class _EmailSenderState extends State<EmailSender> {
         timeStamp = messages[0].date!.millisecondsSinceEpoch;
         await prefs.setInt('time', timeStamp!);
         isSent = true;
-        status = newMessages.length.toString() + " new sms sent successfully";
+        status = "${newMessages.length} new sms sent successfully";
         setState(() {});
       });
     } on MailerException catch (e) {
-      showSnackBar(context, "Email sent failed" + e.message);
+      showSnackBar(context, "Email sent failed${e.message}");
     }
   }
 
@@ -321,8 +317,8 @@ class _EmailSenderState extends State<EmailSender> {
                 }
               },
               color: Colors.blue,
-              child: const Text("Save"),
               textColor: Colors.white,
+              child: const Text("Save"),
             ),
             MaterialButton(
               elevation: 0,
@@ -338,8 +334,8 @@ class _EmailSenderState extends State<EmailSender> {
                 Navigator.of(context).pop();
               },
               color: Colors.blue,
-              child: const Text("Cancel"),
               textColor: Colors.white,
+              child: const Text("Cancel"),
             ),
           ],
           content: SizedBox(

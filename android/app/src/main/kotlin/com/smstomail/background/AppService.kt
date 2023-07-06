@@ -17,7 +17,7 @@ class AppService: Service() {
         {
 
             val notificationBuilder=NotificationCompat.Builder(this,"msgs")
-                    .setContentText("Notificaiton from background Service - Flutter")
+                    .setContentText("Sms To Mail Background Running")
                     .setContentTitle("Background Service")
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .build()
@@ -25,6 +25,7 @@ class AppService: Service() {
             //val manager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             //manager.notify((System.currentTimeMillis()%10000).toInt(),notificationBuilder)
             startForeground((System.currentTimeMillis()%10000).toInt(),notificationBuilder)
+            
             Log.v("OnService","OnService")
         }
 
