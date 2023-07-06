@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sms_forward/loginPage.dart';
-import 'package:sms_forward/send_mail.dart';
 
 class AuthController extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -44,8 +43,6 @@ class AuthController extends ChangeNotifier {
         email = user.email;
         token = googleSignInAuthentication.accessToken;
         userC = user;
-        // Navigator.pushReplacement(context,
-        //     MaterialPageRoute(builder: ((context) => const EmailSender())));
       }
       return user;
     } catch (e) {
@@ -70,17 +67,13 @@ class AuthController extends ChangeNotifier {
     email = user!.email;
     token = googleSignInAuthentication.accessToken;
     userC = user;
-   
+
     return googleSignInAuthentication.accessToken; // New refreshed token
   }
 
   checkSignIn() async {
     if (await googleSignIn.isSignedIn()) {
       refreshToken();
-      // .then((value) {
-      //   Navigator.pushReplacement(context,
-      //       MaterialPageRoute(builder: ((context) => const EmailSender())));
-      // });
     } else {
       signInWithGoogle();
     }
