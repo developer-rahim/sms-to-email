@@ -1,5 +1,5 @@
 
-package com.smstomail.background
+package com.sms.mail.background
 
 import android.app.Application
 import android.app.NotificationChannel
