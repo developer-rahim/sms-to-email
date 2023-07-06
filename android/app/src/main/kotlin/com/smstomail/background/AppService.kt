@@ -1,4 +1,4 @@
-package com.example.sms_forward
+package com.smstomail.background
 
 import android.app.NotificationManager
 import android.app.Service

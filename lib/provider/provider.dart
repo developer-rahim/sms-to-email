@@ -7,9 +7,9 @@ class Controller extends ChangeNotifier {
   int START_SERVICE = 0;
   Future<void> startService() async {
     if (Platform.isAndroid) {
-      var methodChannel = MethodChannel("com.example.messages");
+      var methodChannel = const MethodChannel("com.example.messages");
       String data = await methodChannel.invokeMethod("startService");
-     // debugPrint(data);
+       debugPrint(data);
     }
     notifyListeners();
   }

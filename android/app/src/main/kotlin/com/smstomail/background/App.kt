@@ -1,5 +1,5 @@
 
-package com.example.sms_forward
+package com.smstomail.background
 
 import android.app.Application
 import android.app.NotificationChannel

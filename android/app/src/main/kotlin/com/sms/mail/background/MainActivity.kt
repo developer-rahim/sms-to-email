@@ -1,4 +1,4 @@
-package com.example.sms_forward
+package com.sms.mail.background
 
 import android.content.Intent
 import android.os.Build
