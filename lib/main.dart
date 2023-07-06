@@ -9,7 +9,6 @@ import 'package:sms_forward/provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
 
   // Future<void> stopService() async {
   //   if (Platform.isAndroid) {
@@ -21,10 +20,15 @@ Future<void> main() async {
 
   await Permission.sms.request();
   await Firebase.initializeApp();
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider<Controller>(create: (_) => Controller()),
-     ChangeNotifierProvider<AuthController>(create: (_) => AuthController()),
-  ], child: const MyApp()));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Controller>(create: (_) => Controller()),
+        ChangeNotifierProvider<AuthController>(create: (_) => AuthController()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
