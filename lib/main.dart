@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:sms_forward/app_retain_widget.dart';
 import 'package:sms_forward/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sms_forward/provider/auth_provider.dart';
 import 'package:sms_forward/provider/provider.dart';
 
 void backgroundMain() {
@@ -34,7 +33,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider<Controller>(create: (_) => Controller()),
-        ChangeNotifierProvider<AuthController>(create: (_) => AuthController()),
+        // ChangeNotifierProvider<AuthController>(create: (_) => AuthController()),
       ],
       child: const AppRetainWidget(child: MyApp()),
     ),

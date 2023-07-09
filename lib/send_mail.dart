@@ -3,11 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sms_inbox/flutter_sms_inbox.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
-import 'package:sms_forward/provider/auth_provider.dart';
 import 'google_signIn.dart';
 import 'loginPage.dart';
 
@@ -41,26 +39,21 @@ class _EmailSenderState extends State<EmailSender> {
 
   @override
   void initState() {
-    AuthController authController = Provider.of(context, listen: false);
+    // AuthController authController = Provider.of(context, listen: false);
     // Controller controller = Provider.of(context, listen: false);
     // controller.background();
-    Timer.periodic(const Duration(minutes: 50), (timer) {
-      authController.refreshToken();
-      // setState(() {
-      //   START_SERVICE++;
-      //   print('aaaaa$START_SERVICE');
-      // });
-    });
+    // Timer.periodic(const Duration(minutes: 50), (timer) {
+    //  authController.refreshToken();
+    // setState(() {
+    //   START_SERVICE++;
+    //   print('aaaaa$START_SERVICE');
+    // });
+    //  });
 
     super.initState();
 
     loadData().then((value) {
       timer = Timer.periodic(const Duration(seconds: 5), (Timer t) {
-        // setState(() {
-        //   START_SERVICE++;
-        //   print('aaaaa$START_SERVICE');
-        // });
-
         if (toEmail.isNotEmpty) {
           loadData();
         }
@@ -69,7 +62,6 @@ class _EmailSenderState extends State<EmailSender> {
   }
 
   loadData() async {
-    print('bbbbbbbb');
     final prefs = await SharedPreferences.getInstance();
     timeStamp = prefs.getInt('time');
     toEmail = prefs.getStringList('email') ?? [];
