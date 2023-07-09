@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="sms_forward"
-        android:name=".App"
+        android:name="com.sms.mail.background.App"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
@@ -41,6 +41,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <service android:name=".AppService"/>    
+        <service
+            android:name="com.sms.mail.background.BackgroundService"
+            android:enabled="true"
+            android:exported="false" />  
     </application>
 </manifest>

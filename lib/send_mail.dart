@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 import 'package:sms_forward/provider/auth_provider.dart';
-import 'package:sms_forward/provider/provider.dart';
 import 'google_signIn.dart';
 import 'loginPage.dart';
 
@@ -43,8 +42,8 @@ class _EmailSenderState extends State<EmailSender> {
   @override
   void initState() {
     AuthController authController = Provider.of(context, listen: false);
-    Controller controller = Provider.of(context, listen: false);
-    controller.background();
+    // Controller controller = Provider.of(context, listen: false);
+    // controller.background();
     Timer.periodic(const Duration(minutes: 50), (timer) {
       authController.refreshToken();
       // setState(() {
