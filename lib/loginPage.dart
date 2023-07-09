@@ -42,8 +42,9 @@ class _LoginPageState extends State<LoginPage> {
 
       //CREATING CREDENTIAL FOR FIREBASE
       final AuthCredential credential = GoogleAuthProvider.credential(
-          idToken: googleSignInAuthentication.idToken,
-          accessToken: googleSignInAuthentication.accessToken);
+        idToken: googleSignInAuthentication.idToken,
+        accessToken: googleSignInAuthentication.accessToken,
+      );
 
       //SIGNING IN WITH CREDENTIAL & MAKING A USER IN FIREBASE  AND GETTING USER CLASS
       final userCredential = await _auth.signInWithCredential(credential);
@@ -78,16 +79,9 @@ class _LoginPageState extends State<LoginPage> {
     // TODO: implement initState
     super.initState();
     checkSignIn();
-    Timer.periodic(const Duration(minutes: 45), (Timer t) {
-      checktokenexpiredornot() == false ? refreshToken() : null;
+    Timer.periodic(const Duration(minutes: 59), (Timer t) async {
+      await refreshToken();
     });
-  }
-
-  Future<bool> checktokenexpiredornot() async {
-    User? user = FirebaseAuth.instance.currentUser;
-    IdTokenResult tokenResult = await user!.getIdTokenResult();
-    bool data = DateTime.now().isBefore(tokenResult.expirationTime!);
-    return data;
   }
 
   Future<String?> refreshToken() async {
@@ -107,14 +101,17 @@ class _LoginPageState extends State<LoginPage> {
     email = user!.email;
     token = googleSignInAuthentication.accessToken;
     userC = user;
-    print(token);
+    //IdTokenResult tokenResult = await user.getIdTokenResult();
+    // bool data = DateTime.now().isBefore(tokenResult.expirationTime!);
+    // print(tokenResult.expirationTime);
+    // print(token);
     return googleSignInAuthentication.accessToken; // New refreshed token
   }
 
   checkSignIn() async {
     if (await googleSignIn.isSignedIn()) {
       refreshToken().then((value) {
-        Navigator.pushReplacement(
+        Navigator.push(
           context,
           MaterialPageRoute(
             builder: ((context) => const AppRetainWidget(
