@@ -1,14 +1,24 @@
 import 'dart:async';
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
+import 'package:sms_forward/app_retain_widget.dart';
 import 'package:sms_forward/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sms_forward/provider/auth_provider.dart';
 import 'package:sms_forward/provider/provider.dart';
 
+void backgroundMain() {
+  WidgetsFlutterBinding.ensureInitialized();
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  var channel = const MethodChannel('com.app/background_service');
+  var callbackHandle = PluginUtilities.getCallbackHandle(backgroundMain);
+  channel.invokeMethod('startService', callbackHandle!.toRawHandle());
 
   // Future<void> stopService() async {
   //   if (Platform.isAndroid) {
@@ -26,7 +36,7 @@ Future<void> main() async {
         ChangeNotifierProvider<Controller>(create: (_) => Controller()),
         ChangeNotifierProvider<AuthController>(create: (_) => AuthController()),
       ],
-      child: const MyApp(),
+      child: const AppRetainWidget(child: MyApp()),
     ),
   );
 }

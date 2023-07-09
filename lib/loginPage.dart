@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sms_forward/app_retain_widget.dart';
 
 import 'package:sms_forward/send_mail.dart';
 
@@ -97,8 +98,14 @@ class _LoginPageState extends State<LoginPage> {
   checkSignIn() async {
     if (await googleSignIn.isSignedIn()) {
       refreshToken().then((value) {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: ((context) => const EmailSender())));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => const AppRetainWidget(
+                  child: EmailSender(),
+                )),
+          ),
+        );
       });
     } else {
       signInWithGoogle();
