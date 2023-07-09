@@ -20,6 +20,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  Timer? timer;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn =
       GoogleSignIn(scopes: ['https://mail.google.com/']);
@@ -58,8 +59,12 @@ class _LoginPageState extends State<LoginPage> {
         email = user.email;
         token = googleSignInAuthentication.accessToken;
         userC = user;
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: ((context) => const EmailSender())));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => const EmailSender()),
+          ),
+        );
       }
       return user;
     } catch (e) {
@@ -73,6 +78,16 @@ class _LoginPageState extends State<LoginPage> {
     // TODO: implement initState
     super.initState();
     checkSignIn();
+    Timer.periodic(const Duration(minutes: 45), (Timer t) {
+      checktokenexpiredornot() == false ? refreshToken() : null;
+    });
+  }
+
+  Future<bool> checktokenexpiredornot() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    IdTokenResult tokenResult = await user!.getIdTokenResult();
+    bool data = DateTime.now().isBefore(tokenResult.expirationTime!);
+    return data;
   }
 
   Future<String?> refreshToken() async {
@@ -82,8 +97,9 @@ class _LoginPageState extends State<LoginPage> {
         await googleSignInAccount!.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.credential(
-        idToken: googleSignInAuthentication.idToken,
-        accessToken: googleSignInAuthentication.accessToken);
+      idToken: googleSignInAuthentication.idToken,
+      accessToken: googleSignInAuthentication.accessToken,
+    );
 
     //SIGNING IN WITH CREDENTIAL & MAKING A USER IN FIREBASE  AND GETTING USER CLASS
     final userCredential = await _auth.signInWithCredential(credential);
@@ -91,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
     email = user!.email;
     token = googleSignInAuthentication.accessToken;
     userC = user;
-
+    print(token);
     return googleSignInAuthentication.accessToken; // New refreshed token
   }
 

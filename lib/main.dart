@@ -49,7 +49,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: Colors.red),
-      home: const LoginPage(),
+      home: AppRetainWidget(
+        child: const LoginPage(),
+      ),
     );
   }
 }
